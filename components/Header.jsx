@@ -119,7 +119,7 @@ export default function Header() {
                             )}
                         </Link>}
                         {user && <Link href="/recieveRequests" className="text-sm font-semibold leading-6 text-gray-900 relative">
-                            All Recieved Requests
+                            All Recieveddddddd Requests
                             {recieveRequests && recieveRequests.length > 0 && (
                                 <span className="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center absolute top-0 right-0 -mt-1 -mr-4">
                                     {recieveRequests.length}
