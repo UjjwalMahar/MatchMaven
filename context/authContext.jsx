@@ -10,9 +10,15 @@ export function UserAuthProvider({ children }) {
     const [user, setUser] = useState(null);
     const router = useRouter()
     const loginWithGoogle = async () => {
-        await signInWithPopup(auth, new GoogleAuthProvider())
-        // router.push("/adminpannel")
+        try {
+            await signInWithPopup(auth, new GoogleAuthProvider())
+        } catch (error) {
+            console.log(error.message)
+        }
     }
+
+
+    
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
             setUser(currentuser);

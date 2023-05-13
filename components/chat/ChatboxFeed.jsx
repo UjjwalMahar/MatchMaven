@@ -12,7 +12,6 @@ function ChatboxFeed() {
 
   return (
     <div class="container mx-auto">
-      {isLoading && <h1>Loading ...</h1>}
       <div class="min-w-full rounded border lg:grid lg:grid-cols-3">
         <div class="border-r border-gray-300 lg:col-span-1">
           {/* <!-- searchbar --> */}

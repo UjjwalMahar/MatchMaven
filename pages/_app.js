@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { UserAuthProvider } from "@/context/authContext";
 import { ChatProvider } from "@/context/chatContext";
@@ -13,9 +14,10 @@ export default function App({ Component, pageProps }) {
         <ChatProvider>
           <TeamFormProvider>
             <AcceptRejectButtonProvider>
-              <div className="max-w-7xl mx-auto">
+              <div className="max-w-6xl mx-auto">
                 <Header />
                 <Component {...pageProps} />
+                <Footer/>
               </div>
             </AcceptRejectButtonProvider>
           </TeamFormProvider>
