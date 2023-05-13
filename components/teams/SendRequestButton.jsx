@@ -10,6 +10,10 @@ function SendRequestButton({ name, avatar, category, location, uid }) {
     const { user } = useAuth();
 
     const handelSendRequest = async () => {
+        if (!user) {
+            alert("First login required");
+            return;
+        }
         setIslLoading(true);
         if (uid !== user.uid) {
             await SendRequestToTeam(user, uid, name, avatar, category, location);
@@ -20,7 +24,7 @@ function SendRequestButton({ name, avatar, category, location, uid }) {
     }
     return (
         <div>
-            <button onClick={handelSendRequest} className="bg-red-400 text-white font-semibold px-4 py-2 rounded-md mt-2 hover:bg-red-300">{isloading ? "Sending..." : "SendRequest"}</button>
+            <button onClick={handelSendRequest} className="bg-[#917FB3] text-white font-semibold px-4 py-2 rounded-md mt-2 hover:bg-[#9384D1]">{isloading ? "Sending..." : "SendRequest"}</button>
         </div>
     )
 }

@@ -1,29 +1,89 @@
 import { getPublicTeamList } from '@/repositories/team_repository/teamRepoData';
 import TeamCard from './TeamCard';
+const posts = [
+    {
+        title: 'Boost your conversion rate',
+        href: '#',
+        category: { name: 'Article', href: '#' },
+        description:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.',
+        date: 'Mar 16, 2020',
+        datetime: '2020-03-16',
+        imageUrl:
+            'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+        readingTime: '6 min',
+        author: {
+            name: 'Roel Aufderehar',
+            href: '#',
+            imageUrl:
+                'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        },
+    },
+    {
+        title: 'How to use search engine optimization to drive sales',
+        href: '#',
+        category: { name: 'Video', href: '#' },
+        description:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.',
+        date: 'Mar 10, 2020',
+        datetime: '2020-03-10',
+        imageUrl:
+            'https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+        readingTime: '4 min',
+        author: {
+            name: 'Brenna Goyette',
+            href: '#',
+            imageUrl:
+                'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        },
+    },
+    {
+        title: 'Improve your customer experience',
+        href: '#',
+        category: { name: 'Case Study', href: '#' },
+        description:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.',
+        date: 'Feb 12, 2020',
+        datetime: '2020-02-12',
+        imageUrl:
+            'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+        readingTime: '11 min',
+        author: {
+            name: 'Daniela Metz',
+            href: '#',
+            imageUrl:
+                'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        },
+    },
+]
+
 
 import React, { useEffect, useState } from 'react'
+import Spinner from '../Spinner';
 
 function AllTeamsCollection() {
     const [teamList, setTeamList] = useState()
+    const [loading, setloading] = useState(true)
     const fetchTeamList = async () => {
         const teamListResponce = await getPublicTeamList();
         setTeamList(teamListResponce)
+        setloading(false)
     }
-
     useEffect(() => {
         fetchTeamList()
     }, [])
 
     return (
-        <section class="bg-white dark:bg-gray-900">
-            <div class="container mx-auto px-6 py-10">
-                <div class="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 xl:mt-12 xl:gap-12">
+        <>
+           {(loading && <Spinner/>)}
+            <div className="relative max-w-7xl mx-auto">
+                <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none pb-8">
                     {teamList?.map((value) => {
                         return <TeamCard team={value} />
                     })}
                 </div>
             </div>
-        </section>
+        </>
     )
 }
 
