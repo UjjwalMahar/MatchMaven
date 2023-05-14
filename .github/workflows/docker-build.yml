@@ -16,6 +16,7 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKERHUB_PASSWORD}}
       run:
         docker login -u $DOCKERHUB_PASSWORD -p $DOCKERHUB_PASSWORD
+        
     - name: Build Docker image
       run: docker build -t match_maven .
       
