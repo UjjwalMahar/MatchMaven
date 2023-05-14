@@ -40,9 +40,12 @@ export default function TeamCard({ team }) {
             <p className="block mt-2 mb-2">
               <p className="text-xl font-semibold text-gray-900">{name}</p>
             </p>
-            {uid === user?.uid && <div className="absolute bg-blue-600 text-white  rounded-lg mt-2 px-3 py-2">
-                    <h1 className="font-semibold">My Team</h1>
-         </div>}
+            {uid === user?.uid && 
+        //     <div className="absolute bg-blue-600 text-white  rounded-lg mt-2 px-3 py-2">
+        //             <h1 className="font-semibold">My Team</h1>
+        //  </div>
+        <button  className="bg-[#917FB3] text-white font-semibold px-4 py-2 rounded-md mt-2">My Team</button>
+         }
             {uid != user?.uid && <SendRequestButton uid={uid} name={name} avatar={avatar} location={location} category={category} />}
           </div>
         </div>
