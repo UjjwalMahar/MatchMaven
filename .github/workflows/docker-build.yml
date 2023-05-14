@@ -17,4 +17,4 @@ jobs:
       run: docker build -t match_maven .
       
     - name: Docker Push 
-      run: docker push ${{secrets.DOCKERHUB_USERNAME}}/match_maven:latest
+      run: docker push ujjwalmahar/match_maven:tagname
